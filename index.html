@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        html,body{cursor:default;margin:0;padding:0;border:0;width:100%;scroll-behavior: smooth;scroll-snap-type: proximity;text-rendering: optimizeLegibility;text-rendering: geometricPrecision;font-smooth: always;font-smoothing: antialiased;-moz-font-smoothing: antialiased;-webkit-font-smoothing: antialiased;-webkit-font-smoothing: subpixel-antialiased;background:#fff;}
+        html{height:0;background:#ffffff;}body{position:relative;height: auto;font-family:'Open sans',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;font-size:13px;line-height: 22px;font-weight: 400;color:#161a1c;min-width:312px;}
+        *{box-sizing: border-box;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+        *:not(.usl){-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-moz-user-select: none;user-select: none;}
+        *[hidden]{display: none;}
+        input[type="text"],input[type="number"],input[type="search"],.usl,input.textarea{-webkit-user-select: text;-moz-user-select: text;-ms-user-select: text;user-select: text;}
+        h1,h2,h3,h4,h5,h6,p,ul,input,select,button,textarea{margin:0;padding:0;border:0;background:transparent;outline:none;}
+        input,select,button{font-family: 'Open sans',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif ;}
+        b{font-weight: 600;}
+        /* Useful styles */
+        a:not(.a){color:inherit;text-decoration: none;}
+        /* .fx>*{display:inline-block;} */
+        input[type="text"], input[type="email"], input[type="password"],textarea{padding: 4px 12px; width: 100%; background: #fff; border: solid 1px #e3e3e3; line-height: 24px; margin: 6px 0; max-width: 300px; display: block;}
+
+        .fx{display:box;display: flexbox;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+        .fx.wd{align-items: center;}
+        .fx.wd>*{min-width:50%;}
+        .fx.wd.wd-1_2>*:first-child{min-width:33.33%;max-width:33.33%}
+        .fx.wd.wd-1_3>*:first-child{min-width:25%;max-width:25%}
+        .sg{width:24px;height:24px;display: block;}
+        .sg svg{width:100%;height:100%;padding:0px;display: block;}
+        
+        .img{position:relative;top:0;left:0;}
+        .img.vh{height:calc(100vh - 120px);}
+        .img img{width:auto;height:100%;position:absolute;top:0;left:50%;transform:translate3d(-50%,0,0);}
+        
+        .mxc{max-width:90%;margin:0 auto;}
+        #main .mxc{padding:0 12px;}
+        .fx>.right{margin-left:auto;}
+
+        .btns{display:block;width:100%;margin:24px 0 0 0;}
+        .btns.rt{text-align:right;}
+
+        .btns .btn{display:inline-block;width:auto;margin:0 8px 6px 0;padding:8px 18px;background:#245ED0;color:#fff;border-radius: 4px;font-size: 14px;font-weight: 600;transition: 0.23s all linear;cursor:pointer;}
+        .btns .btn.wd{width:75%;max-width: 200px;text-align: center;}
+        .btns.rt .btn{margin:0 0 6px 8px;}
+
+        .btns .btn span>svg{transition: 0.23s all ease-out;position:relative;top:4px;fill:rgba(255,255,255,0.6);width:18px;height:18px;}
+        .btns .btn span:not(.rt)>svg{margin:-8px 5px 0 -6px;}
+        .btns .btn span.rt>svg{margin:-8px -5px 0 6px;}
+        
+        .btns .btn:hover span:not(.rt)>svg,.btns .btn:active span:not(.rt)>svg{transform-origin:center;transform:translate3d(4px,2px,0);}
+        .btns .btn:hover span.rt>svg,.btns .btn:active span.rt>svg{transform-origin:center;transform:translate3d(4px,-2px,0);}
+        .btns .btn:hover{box-shadow:0 1px 4px 0 rgba(0,0,0,0.23);}
+        .btns .btn:active,.btns .btn:focus{box-shadow:0 4px 6px 2px rgba(0,0,0,0.23),0 1px 1px 1px rgba(0,0,0,0.12);}
+
+        /* Header */
+        .header{width:100%;padding:12px 0;background:transparent;height: 64px;}
+
+        .logo .link{display:inline-block;padding:0 12px;}
+        .logo h1{line-height: 40px;font-weight: 600;}
+        .menu-box{width:auto;list-style-type: none;}
+        .menu-box .menu-item{width:auto;list-style-type: none;margin-left:12px;}
+        .menu-box .menu-item:nth-child(1){margin-left:0px;}
+        .menu-box .menu-item .link{display: inline-block;padding:8px 12px;font-size: 16px;line-height: 20px;}
+
+        /* Main section */
+        .section{margin:12px 0;padding:12px 0;color:#363a3c;overflow: hidden;}
+        .section:nth-child(1){margin-top:0;}
+        h2{font-size: 24px;font-weight: 600;line-height: 30px;margin:8px 0 18px 0;}
+        h3{font-size: 16px;font-weight: 600;line-height: 24px;margin:8px 0 12px 0;}
+        h2>span.b{font-size: 28px;font-weight: 600;display: block;}
+        p{font-size: 16px;line-height: 24px;font-weight: 400;margin:12px 0;}
+
+        .pad{padding:12px 24px 24px 24px;margin:0 auto;min-width:280px;width:75%;box-shadow:0 0px 3px 1px rgba(0,0,0,0.12);border-bottom: solid 4px #245ED0;background: #fff;}
+
+        .contact-us-form{background:#f5f5f5;padding:48px 0;margin:0;}
+
+        .footer{width:100%;background:#f5f5f5;}
+
+        .inline_links{justify-content: center;padding:18px 0;font-weight: 600;font-size: 14px;color:#d6d6d6;border-top:solid 1px #e3e3e3;}
+        .inline_links .inline_link{padding:0 12px;color:#245ED0;}
+    </style>
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="mxc">
+            <div class="fx">
+                <div class="left fx">
+                    <div class="logo">
+                        <a href="#" class="link">
+                            <h1>Lets GtoK</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="right fx">
+                    <ul class="menu-box fx">
+                        <li class="menu-item">
+                            <a href="#" class="link">For Business</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="link">Blogs</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="link">Carnival</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="link">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <section class="section">
+            <div class="mxc">
+                <div class="fx wd wd-1_2">
+                    <div class="left" style="z-index:2;">
+                        <div class="content">
+                            <h2><span class="b">Lorem ipsum</span> dolor sit, amet consectetur!</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt doloremque corrupti id?
+                            </p>
+                            <div class="btns">
+                                <a href="#" class="btn wd">
+                                    Join now
+                                    <span class="rt"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path xmlns="http://www.w3.org/2000/svg" d="M9,5v2h6.59L4,18.59L5.41,20L17,8.41V15h2V5H9z"/></svg></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="img vh">
+                            <img src="./pic_1.png" alt="Balcony gardens">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="section">
+            <div class="mxc">
+                <div class="fx wd" style="align-items: stretch;">
+                    <div class="left">
+                        <div class="btns" style="text-align: center;">
+                            <a href="#" class="btn" style="background:transparent;color:#245ED0;border-radius: 24px;border:solid 1px #d3d3d3;">Share Feelings</a>
+                        </div>
+                        <div class="img vh">
+                            <img src="./pic_2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="right" style="z-index: 2;">
+                        <div class="btns" style="text-align: center;">
+                            <a href="#" class="btn" style="background:transparent;color:#245ED0;border-radius: 24px;border:solid 1px #d3d3d3;">Trade Feelings</a>
+                        </div>
+                        <div class="fx" style="height:calc(100% - 120px);align-items:center;">
+                            <div class="pad">
+                                <p>Sharing your feelings has never been this easier before.</p>
+                                <p>Express your feelings in a <b>Judgement free environment</b>, where they are mattered</p>
+                                <p>Sharing is liberating at <b>Lets GtoK</b>, even anonymously!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="mxc">
+                <div class="title" style="text-align: center;color:#245ED0;">
+                    <h2>Exchange your feelings in a world of Caring Friends</h2>
+                </div>
+                <div class="mid">
+                    <div class="img" style="height:auto;">
+                        <img src="./pic_3.png" alt="Loading" style="height:auto;width:100%;position:relative;">
+                    </div>
+                </div>
+                <div class="btns" style="text-align: center;">
+                    <a href="#" class="btn wd">
+                        Start Sharing
+                        <span class="rt"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path xmlns="http://www.w3.org/2000/svg" d="M9,5v2h6.59L4,18.59L5.41,20L17,8.41V15h2V5H9z"/></svg></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer" class="footer">
+        <div style="background:#fff;padding:24px 0 12px 0;">
+            <div class="mxc">
+                <div class="fx" style="justify-content: center;flex-direction: column;color:#afafaf;text-align: center;">
+                    <div style="padding-bottom:24px;font-size: 16px;"><b>Follow LetsGtoK on </b>
+                        <span><a href="#"><img src="./facebook.jpg" alt="" style="width:24px;height:24px;margin:-6px 6px;border-radius: 50%;"></a></span>
+                        <span><a href="#"><img src="./instagram.jpg" alt="" style="width:24px;height:24px;margin:-6px 6px;border-radius: 50%;"></a></span>
+                        <span><a href="#"><img src="./youtube.jpg" alt="" style="width:24px;height:24px;margin:-6px 6px;border-radius: 50%;"></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section contact-us-form">
+            <div class="mxc" style="width:600px;">
+                <div class="fx wd" style="align-items: flex-start;">
+                    <div class="left">
+                        <div class="title">
+                            <h2>Contact us</h2>
+                            <address>
+                                Lorem, ipsum.<br>
+                                Lorem ipsum dolor sit amet<br>consectetur adipisicing elit. Quo nulla<br>officia ipsum - 500053
+                            </address>
+                            <p><a href="#"class="a">Find more about us</a></p>
+                        </div>
+                    </div>
+                    <div class="left">
+                        <div class="title">
+                            <h3>Fill out this form</h3>
+                        </div>
+                        <div class="form">
+                            <form action="" method="post">
+                                <input type="text" name="" id="" placeholder="Your Name">
+                                <input type="email" name="" id="" placeholder="Your email">
+                                <textarea type="email" name="" id="" placeholder="Enter your message"></textarea>
+                                <input type="submit" value="Submit" hidden id="submit_contact_us">
+                                <label for="submit_contact_us">
+                                    <div class="btns">
+                                        <div class="btn">Submit request</div>
+                                    </div>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+            <div class="mxc">
+                <div class="inline_links fx">
+                    <div class="inline_link"><a href="#">Help center</a></div>
+                    <div class="simple_text">|</div>
+                    <div class="inline_link"><a href="#">Terms and Conditions</a></div>
+                    <div class="simple_text">|</div>
+                    <div class="inline_link"><a href="#">FAQs</a></div>
+                    <div class="simple_text">|</div>
+                    <div class="inline_link"><a href="#">Privacy policy</a></div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
